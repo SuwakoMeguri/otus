@@ -16,4 +16,4 @@ jobs:
     - name: compile 
       run: g++ hw-01/helloworld.cpp
     - name: run
-      run: hw-01/./a.out ${{github.run_number}}
+      run: ./a.out ${{github.run_number}}
