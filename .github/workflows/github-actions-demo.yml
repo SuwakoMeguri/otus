@@ -17,3 +17,7 @@ jobs:
       run: g++ hw-01/helloworld.cpp
     - name: run
       run: ./a.out ${{github.run_number}}
+    - name: release
+      run: gh release create
+      env:
+        GH_TOKEN: ${{ secrets.TOKEN}}
