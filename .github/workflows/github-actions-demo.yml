@@ -13,8 +13,6 @@ jobs:
 
     steps:
     - uses: actions/checkout@v4
-    - name: configure
-      run: ./configure
     - name: compile 
       run: g++ hw-01/helloworld.cpp
     - name: run
