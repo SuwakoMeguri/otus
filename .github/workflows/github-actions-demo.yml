@@ -16,7 +16,7 @@ jobs:
     - name: compile 
       run: sudo apt-get update && sudo apt-get install cmake -y
     - name: some other name
-      run: cmake -B build/ -S . -DPATCH_VERSION=${{ github.run_number }}
+      run: cmake -B build/ -S hw-1/ -DPATCH_VERSION=${{ github.run_number }}
     - name: run
       run: ./build/helloworld_cli ${{github.run_number}}
     - name: release
