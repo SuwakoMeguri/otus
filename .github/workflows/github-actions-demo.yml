@@ -13,12 +13,14 @@ jobs:
 
     steps:
     - uses: actions/checkout@v4
-    - name: compile 
+    - name: dependencies
       run: sudo apt-get update && sudo apt-get install cmake -y
-    - name: some other name
-      run: cmake -B build/ -S hw-01/ -DPATCH_VERSION=${{ github.run_number }}
+    - name: recipe
+      run: ls && cmake -B hw-01/build/ -S hw-01/ -DPATCH_VERSION=${{ github.run_number }}
+    - name: build
+      run: ls && cmake --build hw-01/build
     - name: run
-      run: ./build/helloworld_cli ${{github.run_number}}
+      run: ls && ./hw-01/build/helloworld_cli ${{github.run_number}}
     - name: release
       uses: actions/create-release@v1
       env:
