@@ -15,11 +15,10 @@ jobs:
     - uses: actions/checkout@v4
     - name: compile 
       run: sudo apt-get update && sudo apt-get install cmake -y
-      run: cmake . -DPATCH_VERSION=${{ gtihub.run_number }}
-      run: cmake . -DPATCH_VERSION=${{ gtihub.run_number }}
+    - name: some other name
+      run: cmake -B build/ -S . -DPATCH_VERSION=${{ gtihub.run_number }}
     - name: run
-      run: cmake --build 
-      run: ./helloworld_cli ${{github.run_number}}
+      run: ./build/helloworld_cli ${{github.run_number}}
     - name: release
       uses: actions/release@v1
       env:
