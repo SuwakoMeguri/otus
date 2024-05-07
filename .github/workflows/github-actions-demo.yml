@@ -16,11 +16,11 @@ jobs:
     - name: dependencies
       run: sudo apt-get update && sudo apt-get install cmake -y
     - name: recipe
-      run: ls && cmake -B hw-01/build/ -S hw-01/ -DPATCH_VERSION=${{ github.run_number }}
+      run: cmake hw01/ -B hw-01/build/ -DPATCH_VERSION=${{ github.run_number }}
     - name: build
-      run: ls && cmake --build hw-01/build
+      run: cmake --build hw-01/build
     - name: run
-      run: ls && ./hw-01/build/helloworld_cli ${{github.run_number}}
+      run: ./hw-01/build/helloworld_cli
     - name: release
       uses: actions/create-release@v1
       env:

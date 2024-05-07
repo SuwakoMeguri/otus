@@ -2,5 +2,5 @@
 #include "version.h"
 
 int version() {
-  return BUILD_NUMBER;
+  return PROJECT_VERSION_PATCH;
 }
