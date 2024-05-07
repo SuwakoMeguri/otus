@@ -33,7 +33,6 @@ jobs:
       uses: actions/upload-release-asset@v1
       with:
         upload_url: ${{ steps.create_release.outputs.upload_url }}
-        upload_url: ${{ steps.create_release.outputs.upload_url }}
         asset_path: ./helloworld-0.1.${{ github.run_number }}-Linux.deb
         asset_name: helloworld-0.1.${{ github.run_number }}-Linux.deb
         asset_content_type: application/vnd.debian.binary-package
