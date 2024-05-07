@@ -16,9 +16,9 @@ jobs:
     - name: dependencies
       run: sudo apt-get update && sudo apt-get install cmake -y
     - name: recipe
-      run: cmake . -B build/ -DPATCH_VERSION=${{ github.run_number }}
+      run: cmake ./hw-01 -B hw-01/build/ -DPATCH_VERSION=${{ github.run_number }}
     - name: build
-      run: cmake --build build/
+      run: cmake --build hw-01/build/
     - name: run
       run: ./hw-01/build/helloworld_cli
     - name: release
