@@ -22,7 +22,7 @@ jobs:
     - name: test
       run: cmake --build hw-01/build/ --target test
     - name: package
-      run: cmake --build hw-01/build/ --target test
+      run: cmake --build hw-01/build/ --target package 
     - name: run
       run: ./hw-01/build/helloworld_cli
     - name: release
