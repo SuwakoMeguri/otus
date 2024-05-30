@@ -1,0 +1,22 @@
+name: 'C++ IP address filtration'
+
+on:
+  push:
+    branches:
+      - hw-02
+  workflow_dispatch:
+  jobs:
+    build:
+      runs-on: ubuntu-latest
+      permissions: write-all
+      steps:
+        - uses: actions/checkout@v3
+          with:
+            submodules: true
+        - name: Install Dependencies
+          run: sudo apt-get update && sudo apt-get install cmake
+        - name: Create Recipe
+        - name: Run Tests
+        - name: Build Package
+        - name: Create Release
+        - name: Upload Release
