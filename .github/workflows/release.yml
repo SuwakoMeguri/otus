@@ -16,11 +16,13 @@ jobs:
       - name: Install Dependencies
         run: sudo apt-get update && sudo apt-get install cmake
       - name: Create Recipe
-        run: ls
+        run: cmake hw-02/ -B hw-02/build/
       - name: Run Tests
         run: ls
       - name: Build Package
-        run: ls
+        run: cmake --build hw-02/build/ --target package
+      - name: Run
+        run: cat hw-02/ip_filter.cpp  ./hw-02/build/IPFilter
       - name: Create Release
         run: ls
       - name: Upload Release
