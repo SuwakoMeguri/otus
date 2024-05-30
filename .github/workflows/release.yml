@@ -16,7 +16,12 @@ jobs:
       - name: Install Dependencies
         run: sudo apt-get update && sudo apt-get install cmake
       - name: Create Recipe
+        run: 
       - name: Run Tests
+        run: 
       - name: Build Package
+        run: 
       - name: Create Release
+        run: 
       - name: Upload Release
+        run: 
