@@ -42,6 +42,8 @@ set(CPACK_PACKAGE_VERSION_MAJOR "${PROJECT_VERSION_MAJOR}")
 set(CPACK_PACKAGE_VERSION_MINOR "${PROJECT_VERSION_MINOR}")
 set(CPACK_PACKAGE_VERSION_PATCH "${PROJECT_VERSION_PATCH}")
 
+set(CPACK_PACKAGE_CONTACT hisoutensoku@suwako.ryukyu)
+
 include(CPack)
 enable_testing()
 add_test(test_version test_version)
