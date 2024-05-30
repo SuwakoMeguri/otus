@@ -22,7 +22,7 @@ jobs:
       - name: Build Package
         run: cmake --build hw-02/build/ --target package
       - name: Run
-        run: cat hw-02/ip_filter.cpp  ./hw-02/build/IPFilter
+        run: cat hw-02/ip_filter.cpp | ./hw-02/build/IPFilter
       - name: Create Release
         run: ls
       - name: Upload Release
