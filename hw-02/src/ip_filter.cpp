@@ -4,15 +4,16 @@
 #include <cctype>
 #include <cstdint>
 #include <iostream>
+#include <istream>
 #include <iterator>
 #include <string>
 #include <vector>
 
-std::array<std::array<uint8_t, 4>, 1000> getIPAddresses() {
+std::array<std::array<uint8_t, 4>, 1000> getIPAddresses(std::istream &stream) {
   std::array<std::array<uint8_t, 4>, 1000> IPAddresses;
 
   int i = 0;
-  for (std::string line; std::getline(std::cin, line); i++) {
+  for (std::string line; std::getline(stream, line); i++) {
     int j = 0;
     uint8_t currentOctet = 0;
 
@@ -35,6 +36,8 @@ std::array<std::array<uint8_t, 4>, 1000> getIPAddresses() {
   return IPAddresses;
 }
 
+
+
 void printSelected(std::array<std::array<uint8_t, 4>, 1000> &ip_addresses,
                    bool (*meetCondition)(std::array<uint8_t, 4>)) {
   for (auto ip_address : ip_addresses) {
@@ -48,7 +51,7 @@ void printSelected(std::array<std::array<uint8_t, 4>, 1000> &ip_addresses,
 }
 
 int main() {
-  auto ip_addresses = getIPAddresses();
+  auto ip_addresses = getIPAddresses(std::cin);
 
   auto withoutFilter = [](std::array<uint8_t, 4> val) { return true; };
   auto startsWith1 = [](std::array<uint8_t, 4> val) { return val[0] == 1; };
