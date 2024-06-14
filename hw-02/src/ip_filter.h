@@ -1,7 +1,10 @@
 #include <array>
 #include <cstdint>
 #include <strstream>
+#include <algorithm>
+#include <arpa/inet.h>
+#include <vector>
 
-std::array<std::array<uint8_t, 4>, 1000> getIPAddresses(std::istream &stream);
-void printSelected(std::array<std::array<uint8_t, 4>, 1000> &ip_addresses,
+void printSelected(std::vector<std::array<uint8_t, 4>> &ip_addresses,
                    bool (*meetCondition)(std::array<uint8_t, 4>));
+std::vector<std::array<uint8_t, 4>> getIPAddresses(std::istream &stream);

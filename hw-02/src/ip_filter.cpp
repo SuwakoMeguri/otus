@@ -9,11 +9,11 @@
 #include <string>
 #include <vector>
 
-std::array<std::array<uint8_t, 4>, 1000> getIPAddresses(std::istream &stream) {
-  std::array<std::array<uint8_t, 4>, 1000> IPAddresses;
+std::vector<std::array<uint8_t, 4>> getIPAddresses(std::istream &stream) {
+  std::vector<std::array<uint8_t, 4>> IPAddresses;
 
-  int i = 0;
-  for (std::string line; std::getline(stream, line); i++) {
+  for (std::string line; std::getline(stream, line);) {
+    std::array<uint8_t, 4> ipAddress = {0, 0, 0, 0};
     int j = 0;
     uint8_t currentOctet = 0;
 
@@ -22,23 +22,21 @@ std::array<std::array<uint8_t, 4>, 1000> getIPAddresses(std::istream &stream) {
         break;
       }
       if (c == '.') {
-        IPAddresses[i][j++] = currentOctet;
+        ipAddress[j++] = currentOctet;
         currentOctet = 0;
       } else {
         currentOctet = currentOctet * 10 + (c - '0');
       }
     }
-    IPAddresses[i][j] = currentOctet;
-    currentOctet = 0;
+    ipAddress[j] = currentOctet;
+    IPAddresses.push_back(ipAddress);
   }
-  std::sort(IPAddresses.begin(), IPAddresses.end(),
+  std::sort(IPAddresses.begin(),IPAddresses.end(),
             [](auto first, auto second) { return second < first; });
   return IPAddresses;
 }
 
-
-
-void printSelected(std::array<std::array<uint8_t, 4>, 1000> &ip_addresses,
+void printSelected(std::vector<std::array<uint8_t, 4>> &ip_addresses,
                    bool (*meetCondition)(std::array<uint8_t, 4>)) {
   for (auto ip_address : ip_addresses) {
     if (meetCondition(ip_address)) {
@@ -48,24 +46,4 @@ void printSelected(std::array<std::array<uint8_t, 4>, 1000> &ip_addresses,
                 << static_cast<int>(ip_address[3]) << "\n";
     }
   }
-}
-
-int main() {
-  auto ip_addresses = getIPAddresses(std::cin);
-
-  auto withoutFilter = [](std::array<uint8_t, 4> val) { return true; };
-  auto startsWith1 = [](std::array<uint8_t, 4> val) { return val[0] == 1; };
-  auto startsWith4670 = [](std::array<uint8_t, 4> val) {
-    return val[0] == 46 && val[1] == 70;
-  };
-  auto containing46 = [](std::array<uint8_t, 4> val) {
-    return std::find(val.begin(), val.end(), 46) != std::end(val);
-  };
-
-  printSelected(ip_addresses, withoutFilter);
-  printSelected(ip_addresses, startsWith1);
-  printSelected(ip_addresses, startsWith4670);
-  printSelected(ip_addresses, containing46);
-
-  return 0;
 }
