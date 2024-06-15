@@ -10,14 +10,17 @@ jobs:
     runs-on: ubuntu-latest
     permissions: write-all
     steps:
+      - name: some name idk
       - uses: actions/checkout@v3
         with:
           submodules: true
       - name: Install Dependencies
         run: sudo apt-get update && sudo apt-get install cmake
       - name: Install gtest manually
-        run: sudo apt-get install google-mock && sudo apt-get install libgtest-dev && cd /usr/src/gtest && sudo cmake CMakeLists.txt && sudo make && sudo cp lib/*.a /usr/lib && sudo ln -s /usr/lib/libgtest.a /usr/local/lib/libgtest.a && sudo ln -s /usr/lib/libgtest_main.a /usr/local/lib/libgtest_main.a
-      - name: Create Recipe
+        run: sudo apt-get install libgtest-dev && cd /usr/src/gtest && sudo cmake CMakeLists.txt && sudo make && sudo cp lib/*.a /usr/lib && sudo ln -s /usr/lib/libgtest.a /usr/local/lib/libgtest.a && sudo ln -s /usr/lib/libgtest_main.a /usr/local/lib/libgtest_main.a
+      - name: Install gmock manually
+        run: sudo apt-get install libgmock-dev && cd /usr/src/gmock && sudo cmake CMakeLists.txt && sudo make && sudo cp lib/*.a /usr/lib && sudo ln -s /usr/lib/libgmock.a /usr/local/lib/libgmock.a && sudo ln -s /usr/lib/libgmock_main.a /usr/local/lib/libgmock_main.a
+      - name: Do something
         run: cmake hw-02/ -B hw-02/build/
       - name: Run Tests
         run: ls
