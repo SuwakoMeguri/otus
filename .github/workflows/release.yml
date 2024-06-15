@@ -14,7 +14,13 @@ jobs:
         with:
           submodules: true
       - name: Install Dependencies
-        run: sudo apt-get update && sudo apt-get install cmake
+        run: sudo apt-get update &&
+        sudo apt-get install cmake &&
+        sudo apt-get install libgtest-dev &&
+        cd /usr/src/gtest &&
+        sudo cmake CMakeLists.txt &&
+        sudo make &&
+        sudo cp *.a /usr/lib
       - name: Create Recipe
         run: cmake hw-02/ -B hw-02/build/
       - name: Run Tests
