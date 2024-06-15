@@ -10,7 +10,6 @@ jobs:
     runs-on: ubuntu-latest
     permissions: write-all
     steps:
-      - name: some name idk
       - uses: actions/checkout@v3
         with:
           submodules: true
