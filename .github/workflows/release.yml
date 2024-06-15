@@ -21,6 +21,8 @@ jobs:
         run: sudo apt-get install libgmock-dev && cd /usr/src/googletest/googlemock/ && sudo cmake CMakeLists.txt && sudo make && sudo cp lib/*.a /usr/lib
       - name: Create recipe
         run: cmake hw-02/ -B hw-02/build/
+      - name: Build
+        run: cmake --build hw-02/build
       - name: Run Tests
         run: cmake --build hw-02/build/ --target test
       - name: Build Package
