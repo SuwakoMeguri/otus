@@ -19,8 +19,8 @@ jobs:
         run: sudo apt-get install libgtest-dev && cd /usr/src/gtest && sudo cmake CMakeLists.txt && sudo make && sudo cp lib/*.a /usr/lib && sudo ln -s /usr/lib/libgtest.a /usr/local/lib/libgtest.a && sudo ln -s /usr/lib/libgtest_main.a /usr/local/lib/libgtest_main.a
       - name: Install gmock manually
         run: sudo apt-get install libgmock-dev && cd /usr/src/googletest/googlemock/ && sudo cmake CMakeLists.txt && sudo make && sudo cp lib/*.a /usr/lib
-      - name: Create recipe
-        run: cmake hw-02/ -B hw-02/build/
+      - name: Recipe
+        run: cmake hw-02/ -B hw-02/build/ -DPATCH_VERSION = ${{ github.run_number }}
       - name: Build
         run: cmake --build hw-02/build
       - name: Run Tests
