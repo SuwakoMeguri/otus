@@ -20,7 +20,7 @@ jobs:
       - name: Install gmock manually
         run: sudo apt-get install libgmock-dev && cd /usr/src/googletest/googlemock/ && sudo cmake CMakeLists.txt && sudo make && sudo cp lib/*.a /usr/lib
       - name: Recipe
-        run: cmake hw-02/ -B hw-02/build/ -DPATCH_VERSION = ${{ github.run_number }}
+        run: cmake hw-02/ -B hw-02/build/ -DPATCH_VERSION=${{ github.run_number }}
       - name: Build
         run: cmake --build hw-02/build
       - name: Run Tests
