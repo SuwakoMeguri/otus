@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.29)
 
 set(PATCH_VERSION "1" CACHE INTERNAL "Patch version")
-set(PROJECT_VERSION 0.1.${PATCH_VERSION})
+set(PROJECT_VERSION 1.1.${PATCH_VERSION})
 project(ip-filter VERSION ${PROJECT_VERSION})
 
 set(CMAKE_CXX_STANDARD 17)
