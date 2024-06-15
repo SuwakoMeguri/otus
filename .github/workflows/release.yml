@@ -26,7 +26,7 @@ jobs:
       - name: Build Package
         run: cmake --build hw-02/build/ --target package
       - name: Run
-        run: cat hw-02/resources/ip_filter.tsv | ./hw-02/build/IPFilter | md5sum
+        run: cat hw-02/resources/ip_filter.tsv | ./hw-02/build/ip-filter | md5sum
       - name: Create Release
         run: ls
       - name: Upload Release
